@@ -11,10 +11,13 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- Component scanning -->
-    <context:component-scan base-package="com.shankrish.controller" />
+    <!-- Enable component scanning for controllers -->
+    <context:component-scan base-package="com.shankrish" use-default-filters="false">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
-    <!-- MVC annotations -->
+    <!-- Enable MVC annotations -->
     <mvc:annotation-driven />
 
     <!-- View Resolver -->
@@ -26,9 +29,7 @@
     <!-- Static resources -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
-    <!-- Message Source -->
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="messages" />
-    </bean>
+    <!-- Handle 404 errors gracefully -->
+    <mvc:default-servlet-handler/>
 
 </beans>

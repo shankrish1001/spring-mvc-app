@@ -20,13 +20,13 @@ ENTRYPOINT ["java", "-jar", "spring-mvc-app.jar"]
 
 3-Login and build local docker image
 docker login
-docker build -t java8-demo .
+docker build -t spring-mvc-app .
 4-Push this to hub.docker.com
-docker tag java8-demo shankrish1001/java8-demo
-docker push shankrish1001/java8-demo
-5-Remove java8-demo image of local and online
-docker rmi java8-demo shankrish1001/java8-demo
+docker tag spring-mvc-app shankrish1001/spring-mvc-app
+docker push shankrish1001/spring-mvc-app
+5-Remove spring-mvc-app image of local and online
+docker rmi spring-mvc-app shankrish1001/spring-mvc-app
 6-Pull the same image from hub.docker.com
-docker run --name test-my-image -p 8080:8080 shankrish1001/java8-demo
+docker run --name test-my-image -p 8080:8080 shankrish1001/spring-mvc-app
 7-Test all REST API once again
 

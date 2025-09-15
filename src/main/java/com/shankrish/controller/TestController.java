@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class TestController {
 
+
     @ModelAttribute
     public void modelData(Model m) {
         m.addAttribute("test1", "Test 1111");
