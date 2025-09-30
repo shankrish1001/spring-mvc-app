@@ -1,17 +1,16 @@
-# Use an official Tomcat 9 base image with Java 8
-FROM tomcat:9.0-jdk8-openjdk
+# Use a base image with Tomcat and Java 8
+FROM tomcat:8-jre8
 
-# Maintainer info (optional)
-LABEL maintainer="shankrish8080@gmail.com"
+# Set the working directory inside the container
+WORKDIR /usr/local/tomcat/webapps
 
-# Clean default webapps
-RUN rm -rf /usr/local/tomcat/webapps/*
+# Copy the built WAR file into the Tomcat webapps directory
+# Replace 'your-application.war' with the actual name of your WAR file
+COPY target/spring-mvc-app.war /usr/local/tomcat/webapps/
 
-# Copy your WAR file into the webapps directory
-COPY target/spring-mvc-app.war /usr/local/tomcat/webapps/ROOT.war
-
-# Expose port 8080 (Tomcat default)
+# Expose the default Tomcat port
 EXPOSE 8080
 
-# Start Tomcat (default CMD in base image already starts Tomcat)
+# Command to start Tomcat when the container runs
 CMD ["catalina.sh", "run"]
+
